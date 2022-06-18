@@ -10,7 +10,8 @@
     <meta name="description" content="Source code generated using layoutit.com">
     <meta name="author" content="LayoutIt!">
 
-    <link href="css/bootstrap.min.css" rel="stylesheet">
+	<!-- 新 Bootstrap4 核心 CSS 文件 -->
+	<link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.3.1/css/bootstrap.min.css">
     <link href="css/style.css" rel="stylesheet">
 
   </head>
@@ -69,6 +70,10 @@
 				</div>
 				<div class="col-md-4">
 					<form role="form">
+						<h3 class="text-center">
+							<p></p>
+							欢迎加入罗德岛，请注册！
+						</h3>
 						<div class="form-group">
 							 
 							<label for="exampleInputID1">
@@ -77,14 +82,12 @@
 							<input type="value" class="form-control" id="exampleInputID1">
 						</div>
 						<div class="form-group">
-							 
 							<label for="exampleInputPassword1">
 								密码
 							</label>
 							<input type="password" class="form-control" id="exampleInputPassword1">
 						</div>
-						<div class="checkbox">
-							<div class="form-group">
+						<div class="form-group">
 
 							<label for="exampleInputPassword2">
 								重复密码
@@ -98,7 +101,7 @@
 							</label>
 						</div> 
 						<button type="submit" class="btn btn-primary">
-							登录
+							注册
 						</button>
 					</form>
 				</div>
@@ -109,8 +112,14 @@
 	</div>
 </div>
 
-    <script src="js/jquery.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
+<!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
+<script src="https://cdn.staticfile.org/jquery/3.2.1/jquery.min.js"></script>
+
+<!-- bootstrap.bundle.min.js 用于弹窗、提示、下拉菜单，包含了 popper.min.js -->
+<script src="https://cdn.staticfile.org/popper.js/1.15.0/umd/popper.min.js"></script>
+
+<!-- 最新的 Bootstrap4 核心 JavaScript 文件 -->
+<script src="https://cdn.staticfile.org/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
     <script src="js/scripts.js"></script>
   </body>
 </html>
