@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Bootstrap 4, from LayoutIt!</title>
+
+    <meta name="description" content="Source code generated using layoutit.com">
+    <meta name="author" content="LayoutIt!">
+
+    <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.3.1/css/bootstrap.min.css">
+    <link href="css/style.css" rel="stylesheet">
+
+  </head>
+  <body>
+
+
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-md-12">
+			<div class="row">
+				<div class="col-md-1">
+					<img alt="Bootstrap Image Preview" src="{{ url_for('static', filename='images/明日方舟logo.png') }}" width="125px" height="52px" />
+					<img alt="Bootstrap Image Preview" src="{{ url_for('static', filename='images/罗德岛logo.png') }}" width="125px" height="100px" />
+				</div>
+				<div class="col-md-11">
+					<nav class="navbar navbar-expand-lg navbar-light bg-light navbar-dark bg-dark">
+
+				<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+					<ul class="navbar-nav">
+						<div>
+        					<p class="navbar-brand" style="font-size: 20px">明日方舟信息管理系统&nbsp&nbsp</p>
+    					</div>
+						<li class="nav-item active">
+							 <a class="nav-link" href="/">返回首页&nbsp&nbsp<span class="sr-only">(current)</span></a>
+						</li>
+						<li class="nav-item active">
+							 <a class="nav-link" href="arts">美术资源&nbsp&nbsp<span class="sr-only">(current)</span></a>
+						</li>
+						<li class="nav-item active">
+							 <a class="nav-link" href="details">档案信息&nbsp&nbsp<span class="sr-only">(current)</span></a>
+						</li>
+						<li class="nav-item active">
+							 <a class="nav-link" href="fight">干员属性&nbsp&nbsp<span class="sr-only">(current)</span></a>
+						</li>
+						<li class="nav-item active disabled">
+							 <a class="nav-link" href="fight">干员录入&nbsp&nbsp<span class="sr-only">(current)</span></a>
+						</li>
+					</ul>
+
+					<form class="form-inline" method="post">
+						<input class="form-control mr-sm-2" type="text" name="search_context"/>
+						<button class="btn btn-primary my-2 my-sm-0" type="submit">
+							查找干员
+						</button>
+					</form>
+					<ul class="navbar-nav ml-md-auto">
+
+						<li class="nav-item active disabled">
+							 <a class="nav-link" href="#">欢迎登录，Dr.{{ ID }}&nbsp&nbsp<span class="sr-only">(current)</span></a>
+						</li>
+
+					</ul>
+				</div>
+			</nav>
+                    <div class="row">
+				<div class="col-md-12">
+					{# 使用 length 过滤器获取 skins 变量的长度 #}
+					<h2>时装</h2>
+					<h3>该名干员共有 {{ skins|length }} 套时装</h3>
+					{% for skin in skins %} {# 迭代 skins 变量 #}
+					<img alt="Bootstrap Image Preview" src="/operator_data/{{ skin.skin_operator_name }}/{{ skin.skin_name }}.png" />
+					<h3>
+						{{ skin.skin_name }}
+					</h3>
+					<pre>
+						{{ skin.skin_description }}
+					</pre>
+					{% endfor %} {# 使用 endfor 标签结束 for 语句 #}
+
+					<h5 class="page-header" style="margin-top: 50px"></h5>
+					<h3>时装详细信息</h3>
+					<table class="table">
+						<thead>
+							<tr>
+								<th>
+									名称
+								</th>
+								<th>
+									画师
+								</th>
+								<th>
+									是否可购买
+								</th>
+								<th>
+									价格
+								</th>
+							</tr>
+						</thead>
+						<tbody>
+						{% for skin in skins %} {# 迭代 skins 变量 #}
+							<tr>
+								<td>
+									{{ skin.skin_name }}
+								</td>
+								<td>
+									{{ skin.skin_printer }}
+								</td>
+								<td>
+									{{ skin.skin_can_buy }}
+								</td>
+								<td>
+									{{ skin.skin_price }}
+								</td>
+							</tr>
+						{% endfor %} {# 使用 endfor 标签结束 for 语句 #}
+
+						</tbody>
+					</table>
+				</div>
+			</div>
+					<h5 class="page-header" style="margin-top: 50px"></h5>
+					 <hr width="100%" align="left">
+					<h5 class="page-header" style="margin-top: 50px"></h5>
+			<div class="row">
+				<div class="col-md-12">
+					<h2>语音</h2>
+					<h3>该名干员共有 {{ voices|length }} 条语音</h3>
+					<table class="table">
+						<thead>
+							<tr>
+								<th>
+									编号
+								</th>
+								<th>
+									语言
+								</th>
+								<th>
+									配音演员
+								</th>
+								<th>
+									对话场景
+								</th>
+								<th>
+									内容
+								</th>
+							</tr>
+						</thead>
+						<tbody>
+						{% for voice in voices %} {# 迭代 voices 变量 #}
+							<tr>
+								<td>
+									{{ voice.voice_no }}
+								</td>
+								<td>
+									{{ voice.voice_language }}
+								</td>
+								<td>
+									{{ voice.voice_actor }}
+								</td>
+								<td>
+									{{ voice.voice_description }}
+								</td>
+								<td>
+									{{ voice.voice_content }}
+								</td>
+							</tr>
+						{% endfor %} {# 使用 endfor 标签结束 for 语句 #}
+
+						</tbody>
+					</table>
+				</div>
+			</div>
+
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
+<script src="https://cdn.staticfile.org/jquery/3.2.1/jquery.min.js"></script>
+
+<!-- bootstrap.bundle.min.js 用于弹窗、提示、下拉菜单，包含了 popper.min.js -->
+<script src="https://cdn.staticfile.org/popper.js/1.15.0/umd/popper.min.js"></script>
+
+<!-- 最新的 Bootstrap4 核心 JavaScript 文件 -->
+<script src="https://cdn.staticfile.org/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script src="js/scripts.js"></script>
+  </body>
+</html>

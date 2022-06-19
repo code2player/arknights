@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Bootstrap 4, from LayoutIt!</title>
+
+    <meta name="description" content="Source code generated using layoutit.com">
+    <meta name="author" content="LayoutIt!">
+
+    <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.3.1/css/bootstrap.min.css">
+    <link href="css/style.css" rel="stylesheet">
+
+  </head>
+  <body>
+
+
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-md-12">
+			<div class="row">
+				<div class="col-md-1">
+					<img alt="Bootstrap Image Preview" src="{{ url_for('static', filename='images/明日方舟logo.png') }}" width="125px" height="52px" />
+					<img alt="Bootstrap Image Preview" src="{{ url_for('static', filename='images/罗德岛logo.png') }}" width="125px" height="100px" />
+				</div>
+				<div class="col-md-11">
+					<nav class="navbar navbar-expand-lg navbar-light bg-light navbar-dark bg-dark">
+
+				<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+					<ul class="navbar-nav">
+						<div>
+        					<p class="navbar-brand" style="font-size: 20px">明日方舟信息管理系统&nbsp&nbsp</p>
+    					</div>
+						<li class="nav-item active">
+							 <a class="nav-link" href="/">返回首页&nbsp&nbsp<span class="sr-only">(current)</span></a>
+						</li>
+						<li class="nav-item active">
+							 <a class="nav-link" href="arts">美术资源&nbsp&nbsp<span class="sr-only">(current)</span></a>
+						</li>
+						<li class="nav-item active">
+							 <a class="nav-link" href="details">档案信息&nbsp&nbsp<span class="sr-only">(current)</span></a>
+						</li>
+						<li class="nav-item active">
+							 <a class="nav-link" href="fight">干员属性&nbsp&nbsp<span class="sr-only">(current)</span></a>
+						</li>
+						<li class="nav-item active disabled">
+							 <a class="nav-link" href="fight">干员录入&nbsp&nbsp<span class="sr-only">(current)</span></a>
+						</li>
+					</ul>
+					<form class="form-inline" method="post">
+						<input class="form-control mr-sm-2" type="text" name="search_context"/>
+						<button class="btn btn-primary my-2 my-sm-0" type="submit">
+							查找干员
+						</button>
+					</form>
+					<ul class="navbar-nav ml-md-auto">
+
+						<li class="nav-item active disabled">
+							 <a class="nav-link" href="#">欢迎登录，Dr.{{ ID }}&nbsp&nbsp<span class="sr-only">(current)</span></a>
+						</li>
+
+					</ul>
+				</div>
+			</nav>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h5 class="page-header" style="margin-top: 50px"></h5>
+                            <h3>{{ attribute.operator_name }}的基础属性</h3>
+                            <div class="row">
+                            <div class="col-md-4">
+                    <table class="table">
+						<tbody>
+							<tr>
+								<td>
+									等级
+								</td>
+								<td>
+									{{ attribute.level }}
+								</td>
+							</tr>
+							<tr class="table-active">
+								<td>
+									经验
+								</td>
+								<td>
+									{{ attribute.exp }}
+								</td>
+							</tr>
+							<tr>
+								<td>
+									潜能
+								</td>
+								<td>
+									{{ attribute.potential }}
+								</td>
+							</tr>
+							<tr class="table-active">
+								<td>
+									精英化
+								</td>
+								<td>
+									{{ attribute.promotion }}
+								</td>
+							</tr>
+						</tbody>
+					</table>
+
+                            </div>
+                            <div class="col-md-4">
+                                <table class="table">
+						<tbody>
+							<tr class="table-active">
+								<td>
+									生命
+								</td>
+								<td>
+									{{ attribute.HP }}
+								</td>
+							</tr>
+							<tr>
+								<td>
+									攻击
+								</td>
+								<td>
+									{{ attribute.attack }}
+								</td>
+							</tr>
+							<tr class="table-active">
+								<td>
+									攻击方式
+								</td>
+								<td>
+									{{ attribute.attack_mode }}
+								</td>
+							</tr>
+							<tr>
+								<td>
+									攻击速度
+								</td>
+								<td>
+									{{ attribute.attack_speed }}
+								</td>
+							</tr>
+						</tbody>
+					</table>
+                            </div>
+                            <div class="col-md-4">
+                                                                <table class="table">
+						<tbody>
+							<tr>
+								<td>
+									物理防御
+								</td>
+								<td>
+									{{ attribute.physical_defense }}
+								</td>
+							</tr>
+							<tr class="table-active">
+								<td>
+									魔法防御
+								</td>
+								<td>
+									{{ attribute.magic_defense }}
+								</td>
+							</tr>
+							<tr>
+								<td>
+									部署费用
+								</td>
+								<td>
+									{{ attribute.cost }}
+								</td>
+							</tr>
+							<tr class="table-active">
+								<td>
+									再部署时间
+								</td>
+								<td>
+									{{ attribute.return_time }}
+								</td>
+							</tr>
+						</tbody>
+					</table>
+                            </div>
+                            </div>
+
+                            <h5 class="page-header" style="margin-top: 50px"></h5>
+					        <hr width="100%" align="left">
+					        <h5 class="page-header" style="margin-top: 50px"></h5>
+
+							<h2>技能</h2>
+							<h3>该名干员共有 {{ skills|length }} 个技能</h3>
+							{% for skill in skills %} {# 迭代 skills 变量 #}
+							<h5 class="page-header" style="margin-top: 20px"></h5>
+					        <hr width="100%" align="left">
+					        <h5 class="page-header" style="margin-top: 20px"></h5>
+							<img alt="Bootstrap Image Preview" src="/operator_data/{{ skill.operator_name }}/{{ skill.skill_name }}.png" />
+							<h3>
+								{{ skill.skill_name }}
+							</h3>
+							<p>
+								技能等级: {{ skill.skill_level }}</br>
+								技能描述: {{ skill.skill_description }}</br>
+								技能效果: {{ skill.skill_effect }}</br>
+							</p>
+
+
+							{% endfor %} {# 使用 endfor 标签结束 for 语句 #}
+
+
+
+
+                        </div>
+                    </div>
+
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
+<script src="https://cdn.staticfile.org/jquery/3.2.1/jquery.min.js"></script>
+
+<!-- bootstrap.bundle.min.js 用于弹窗、提示、下拉菜单，包含了 popper.min.js -->
+<script src="https://cdn.staticfile.org/popper.js/1.15.0/umd/popper.min.js"></script>
+
+<!-- 最新的 Bootstrap4 核心 JavaScript 文件 -->
+<script src="https://cdn.staticfile.org/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script src="js/scripts.js"></script>
+  </body>
+</html>

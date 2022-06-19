@@ -1,19 +1,14 @@
 # Empty CSS file for your own CSS
-body {
-  background-image: url("../photo/头图1端午.jpg");
-  background-position: center 0;
 
-  background-repeat: no-repeat;
-
-  background-attachment: fixed;
-
-  background-size: cover;
-
-  -webkit-background-size: cover;
-
-  -o-background-size: cover;
-
-  -moz-background-size: cover;
-
-  -ms-background-size: cover;
+.alert {
+    position: relative;
+    padding: 7px;
+    margin: 7px 0;
+    border: 1px solid transparent;
+    color: #004085;
+    background-color: #cce5ff;
+    border-color: #b8daff;
+    border-radius: 5px;
 }
+
+
