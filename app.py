@@ -145,9 +145,36 @@ def operator_fight(operator_name):
     skills = db.getSkills(operator_name)
     return render_template('fight.html', attribute=attribute, skills=skills, ID=session.get('username'))
 
+# 更新用户信息
+@app.route('/updateUser', methods=['GET', 'POST'])
+def updateUserInfo():
+    if request.method == 'POST':
+        ID = session.get('username')
+        password = request.form.get('password')
+        email = request.form.get('email')
+        phone = request.form.get('phone')
+        db.updateUser(ID, password, email, phone)
+        flash('修改用户信息成功')  # 显示提示
+        return redirect(url_for('updateUserInfo'))  # 重定向
+    user = db.getUser(session.get('username'))
+    return render_template('update_user.html', user=user, ID=session.get('username'))
 
+@app.route('/addOperator', methods=['GET', 'POST'])
+def addOperator():
+    if request.method == 'POST':
+        no = request.form.get('no')
+        name = request.form.get('name')
+        occupation = request.form.get('occupation')
+        rarity = request.form.get('rarity')
+        position = request.form.get('position')
+        gender = request.form.get('gender')
+        tag = request.form.get('tag')
+        characteristic = request.form.get('characteristic')
+        db.addOperator(no, name, occupation, rarity, position, gender, tag, characteristic)
 
-
+        flash('添加干员信息成功')  # 显示提示
+        return redirect(url_for('home'))  # 重定向
+    return render_template('add_operator.html', ID=session.get('username'))
 
 
 if __name__ == '__main__':

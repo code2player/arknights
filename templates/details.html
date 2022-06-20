@@ -45,8 +45,8 @@
 						<li class="nav-item active">
 							 <a class="nav-link" href="fight">干员属性&nbsp&nbsp<span class="sr-only">(current)</span></a>
 						</li>
-						<li class="nav-item active disabled">
-							 <a class="nav-link" href="fight">干员录入&nbsp&nbsp<span class="sr-only">(current)</span></a>
+						<li class="nav-item active">
+							 <a class="nav-link" href="/addOperator">干员录入&nbsp&nbsp<span class="sr-only">(current)</span></a>
 						</li>
 					</ul>
 					<form class="form-inline" method="post">
@@ -56,10 +56,18 @@
 						</button>
 					</form>
 					<ul class="navbar-nav ml-md-auto">
-
-						<li class="nav-item active disabled">
-							 <a class="nav-link" href="#">欢迎登录，Dr.{{ ID }}&nbsp&nbsp<span class="sr-only">(current)</span></a>
+						{% if ID!=None %}
+						<li class="nav-item active">
+							 <a class="nav-link" href="/updateUser">欢迎登录，Dr.{{ ID }}&nbsp&nbsp<span class="sr-only">(current)</span></a>
 						</li>
+						{% else %}
+						<li class="nav-item active">
+							 <a class="nav-link" href="/login">登录<span class="sr-only">(current)</span></a>
+						</li>
+						<li class="nav-item active">
+							 <a class="nav-link" href="/register">注册<span class="sr-only">(current)</span></a>
+						</li>
+						{% endif %}
 
 					</ul>
 				</div>
@@ -68,7 +76,7 @@
 			<div class="row">
 				<div class="col-md-12">
 					<h5 class="page-header" style="margin-top: 50px"></h5>
-					<h3>{{ details.details_operator_name }}的基本信息</h3>
+					<h3>{{ base_info.name }}的基本信息</h3>
 					<table class="table">
 						<tbody>
 							<tr>
@@ -145,21 +153,21 @@
 					<h5 class="page-header" style="margin-top: 50px"></h5>
 
 					<img alt="Bootstrap Image Preview" src="/images/干员档案A.png" />
-					<h3>{{ details.details_operator_name }}的个人档案</h3>
+					<h3>{{ base_info.name }}的个人档案</h3>
                     <pre>{{ details.details_archives }}</pre>
                     <h5 class="page-header" style="margin-top: 50px"></h5>
 					 <hr width="100%" align="left">
 					<h5 class="page-header" style="margin-top: 50px"></h5>
 
 					<img alt="Bootstrap Image Preview" src="/images/干员密录A.png" />
-                    <h3>{{ details.details_operator_name }}的干员密录</h3>
+                    <h3>{{ base_info.name }}的干员密录</h3>
                     <pre>{{ details.details_plot }}</pre>
                     <h5 class="page-header" style="margin-top: 50px"></h5>
 					 <hr width="100%" align="left">
 					<h5 class="page-header" style="margin-top: 50px"></h5>
 
 					<img alt="Bootstrap Image Preview" src="/images/悖论模拟A.png" />
-                    <h3>{{ details.details_operator_name }}的悖论模拟</h3>
+                    <h3>{{ base_info.name }}的悖论模拟</h3>
                     <pre>{{ details.details_map }}</pre>
                     <h5 class="page-header" style="margin-top: 50px"></h5>
 					 <hr width="100%" align="left">

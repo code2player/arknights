@@ -135,11 +135,41 @@ class MySQL:
         except:
             return False
 
+    def getUser(self, username):
+        try:
+            sql_cmd = "SELECT * FROM user_info WHERE ID = '{}';".format(
+                username)
+            self.cursor.execute(sql_cmd)
+            res = self.cursor.fetchone()
+            return res
+        except:
+            rese = {}
+            return rese
 
+    def updateUser(self, ID, password, email, phone):
+        try:
+            sql_cmd = "update user_info set password='{}' , email='{}' " \
+                      ", phone='{}'  where ID = '{}';" \
+                .format(password, email, phone, ID)
+            self.cursor.execute(sql_cmd)
+            self.db.commit()
+            res = self.cursor.fetchone()
+            return res
+        except:
+            rese = {}
+            return rese
 
-
-
-
+    def addOperator(self, no, name, occupation, rarity, position, gender, tag, characteristic):
+        try:
+            sql_cmd = "INSERT INTO `operator_base_info` VALUES ('{}','{}','{}','{}','{}','{}','{}','{}');" \
+                .format(name, no, occupation, rarity, position, gender, tag, characteristic)
+            self.cursor.execute(sql_cmd)
+            self.db.commit()
+            res = self.cursor.fetchone()
+            return res
+        except:
+            rese = {}
+            return rese
 
 
 

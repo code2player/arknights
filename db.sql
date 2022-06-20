@@ -5,7 +5,16 @@
 create database arknights;
 use arknights;
 
-
+create table operator_base_info(
+    name varchar(20) not null primary key,
+    no varchar(10) not null,
+    occupation varchar(20) not null,
+    rarity integer not null,
+    position varchar(20) not null,
+    gender varchar(20) not null,
+    tag varchar(40) not null,
+    characteristic varchar(100) not null
+);
 
 create table skin_info(
     skin_name varchar(20) not null primary key,
@@ -13,7 +22,9 @@ create table skin_info(
     skin_printer varchar(20) not null,
     skin_description varchar(200) not null,
     skin_can_buy boolean not null,
-    skin_price integer not null
+    skin_price integer not null,
+    constraint `skin_con` foreign key (`skin_operator_name`)
+        references `operator_base_info`(`name`)
 );
 
 create table voice_info(
@@ -22,7 +33,9 @@ create table voice_info(
     voice_language varchar(20) not null,
     voice_actor varchar(20) not null,
     voice_description varchar(40) not null,
-    voice_content varchar(200) not null
+    voice_content varchar(200) not null,
+    constraint `voice_con` foreign key (`voice_operator_name`)
+        references `operator_base_info`(`name`)
 );
 
 create table details_info(
@@ -30,7 +43,9 @@ create table details_info(
     details_operator_name varchar(20) not null,
     details_archives varchar(2000) not null,
     details_plot varchar(400) not null,
-    details_map varchar(400) not null
+    details_map varchar(400) not null,
+    constraint `details_con` foreign key (`details_operator_name`)
+        references `operator_base_info`(`name`)
 );
 
 create table operator_attribute_info(
@@ -47,25 +62,12 @@ create table operator_attribute_info(
     physical_defense integer not null,
     magic_defense integer not null,
     cost integer not null,
-    return_time integer not null
+    return_time integer not null,
+    constraint `attribute_con` foreign key (`operator_name`)
+        references `operator_base_info`(`name`)
 );
 
-create table operator_base_info(
-    name varchar(20) not null primary key,
-    no varchar(10) not null,
-    occupation varchar(20) not null,
-    rarity integer not null,
-    position varchar(20) not null,
-    gender varchar(20) not null,
-    tag varchar(40) not null,
-    characteristic varchar(100) not null,
-    attribute varchar(20) not null,
-    details varchar(20) not null,
-    constraint `attribute_con` foreign key (`attribute`)
-        references `operator_attribute_info`(`attribute_no`),
-    constraint `details_con` foreign key (`details`)
-        references `details_info`(`details_no`)
-);
+
 
 create table skill_info(
     skill_name varchar(20) not null primary key,
@@ -91,6 +93,8 @@ create table user_info(
         references `operator_base_info`(`name`)
 );
 
+INSERT INTO `operator_base_info` VALUES ('能天使','0143','狙击——速射手',6,'高台位','女','输出','优先攻击空中目标');
+
 
 
 
@@ -112,16 +116,25 @@ INSERT INTO `details_info` VALUES ('0143','能天使', '【代号】能天使\n�
 
 INSERT INTO `operator_attribute_info` VALUES ('0143','能天使',50,20000,3,2,1265,744,"远程",1,123,10,11,60);
 
-INSERT INTO `operator_base_info` VALUES ('能天使','0143','狙击——速射手',6,'高台位','女','输出','优先攻击空中目标','0143','0143');
+
 
 INSERT INTO `skill_info` VALUES ('冲锋模式','能天使', 5, '倾泻子弹，造成中量伤害',  '110%倍率的三连击');
 INSERT INTO `skill_info` VALUES ('扫射模式','能天使', 6, '倾泻子弹，造成大量伤害',  '110%倍率的四连击');
 INSERT INTO `skill_info` VALUES ('过载模式','能天使', 7, '倾泻子弹，造成巨量伤害',  '110%倍率的五连击');
 
+INSERT INTO `user_info` VALUES ('冬马和纱','123','123456789@qq.com','13511111111','1','能天使','能天使');
 
 
 
 
-INSERT INTO `user_info` VALUES ('冬马和纱','123','123456789@qq.com','13511111111','3','能天使','能天使');
+
+
 
 drop database arknights;
+
+
+
+INSERT INTO `skin_info` VALUES ('凯尔希精一立绘','凯尔希', '唯@W','干员平时最常穿着的服装。\n
+虽然不一定比制服更实用，但是一定是干员最舒适的搭配之一。',True,0);
+INSERT INTO `skin_info` VALUES ('凯尔希精二立绘','凯尔希', '唯@W','晋升后，经过调整的服装。\n
+根据干员的经验，对服装细节进行改进，针对一些作战环境进行了特化处理。在满足战斗需求的同时，最大程度还原各位干员熟悉的舒适穿着体验。',True,0);
